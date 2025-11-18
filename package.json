@@ -1,13 +1,17 @@
 {
-  "name": "nvidia-proxy",
+  "name": "janitor-ai-nim-proxy",
   "version": "1.0.0",
-  "description": "OpenAI to NVIDIA NIM proxy",
-  "main": "index.js",
+  "description": "OpenAI compatible proxy for NVIDIA NIM",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "node-fetch": "^2.6.1"
+    "axios": "^1.5.0",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
