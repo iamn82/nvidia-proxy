@@ -1,4 +1,4 @@
-json{
+{
   "name": "nvidia-proxy",
   "version": "1.0.0",
   "description": "OpenAI to NVIDIA NIM proxy",
