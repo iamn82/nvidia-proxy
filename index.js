@@ -2,6 +2,21 @@ const express = require('express');
 const fetch = require('node-fetch');
 
 const app = express();
+
+// CORS middleware - ÇOK ÖNEMLİ!
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+  // OPTIONS isteği için hemen cevap dön
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  
+  next();
+});
+
 app.use(express.json());
 
 const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY || '';
@@ -52,6 +67,10 @@ app.get('/v1/models', (req, res) => {
 
 app.get('/health', (req, res) => {
   res.json({ status: "healthy" });
+});
+
+app.get('/', (req, res) => {
+  res.json({ message: "NVIDIA NIM Proxy API is running" });
 });
 
 const PORT = process.env.PORT || 3000;
